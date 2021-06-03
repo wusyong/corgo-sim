@@ -1,0 +1,10 @@
+[package]
+name = "corgo"
+version = "0.1.0"
+authors = ["Ngo Iok Ui <wusyong9104@gmail.com>"]
+edition = "2018"
+
+[lib]
+crate-type = ["staticlib"]
+
+[dependencies]
