@@ -4,13 +4,13 @@
 CC=riscv64-unknown-elf-gcc
 CFLAGS=-Wall -Wextra -pedantic -Wextra -O0 -g
 CFLAGS+=-static -ffreestanding -nostdlib -fno-rtti -fno-exceptions
-CFLAGS+=-march=rv64gc -mabi=lp64
+CFLAGS+=-march=rv64gc -mabi=lp64d
 INCLUDES=
 LINKER_SCRIPT=-Tlink.ld
 TYPE=debug
 RUST_TARGET=./target/riscv64gc-unknown-none-elf/$(TYPE)
 LIBS=-L$(RUST_TARGET)
-SOURCES_ASM=$(wildcard src/asm/*.S)
+SOURCES_ASM=$(wildcard src/cpu/*.s)
 LIB=-lcorgo -lgcc
 OUT=os.elf
 
