@@ -1,16 +1,12 @@
 #![no_std]
 #![feature(panic_info_message, llvm_asm)]
 
-pub mod uart;
-
-use uart::{Uart, UART_BASE_ADDR};
-
 #[macro_export]
 macro_rules! print
 {
     ($($args:tt)+) => ({
         use core::fmt::Write;
-        let _ = write!(Uart::new(UART_BASE_ADDR), $($args)+);
+        let _ = write!(crate::uart::Uart::new(crate::uart::UART_BASE_ADDR), $($args)+);
     });
 }
 #[macro_export]
@@ -26,6 +22,11 @@ macro_rules! println
 	print!(concat!($fmt, "\r\n"), $($args)+)
     });
 }
+
+pub mod page;
+pub mod uart;
+
+use uart::{Uart, UART_BASE_ADDR};
 
 #[no_mangle]
 extern "C" fn eh_personality() {}
@@ -111,3 +112,4 @@ extern "C" fn kmain() {
         }
     }
 }
+
