@@ -1,4 +1,8 @@
-.section .text
 .global asm_trap_vector
+# This will be our trap vector when we start
+# handling interrupts.
 asm_trap_vector:
-    mret
+	csrr	a0, mtval
+	wfi
+	j asm_trap_vector
+
