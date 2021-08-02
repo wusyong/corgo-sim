@@ -10,7 +10,7 @@ LINKER_SCRIPT=-Tlink.ld
 TYPE=debug
 RUST_TARGET=./target/riscv64gc-unknown-none-elf/$(TYPE)
 LIBS=-L$(RUST_TARGET)
-SOURCES_ASM=$(wildcard src/cpu/*.s)
+SOURCES_ASM=$(wildcard src/asm/*.S)
 LIB=-lcorgo -lgcc
 OUT=os.elf
 
