@@ -45,6 +45,7 @@ _start:
 	csrw	mstatus, t0
 	# Do not allow interrupts while running kinit
 	csrw	mie, zero
+
 	# Machine's exception program counter (MEPC) is set to `kinit`.
 	la		t1, kinit
 	csrw	mepc, t1
